@@ -66,12 +66,15 @@ margin_bottom = 155.0
 margin_top = 165.0
 margin_bottom = 196.0
 
-[node name="Score" parent="CanvasLayer/UI/GameStatus" index="0"]
-custom_colors/font_color = Color( 1, 1, 1, 1 )
-custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
-custom_constants/shadow_offset_x = 2
-custom_constants/shadow_offset_y = 1
-custom_constants/shadow_as_outline = 1
+[node name="Ratio" parent="CanvasLayer/UI/GameScore" index="1"]
+margin_right = 74.0
+text = "W 0  :  L 0"
+
+[node name="ResultWin" parent="CanvasLayer/UI/GameStatus" index="0"]
+visible = false
+
+[node name="ResultLose" parent="CanvasLayer/UI/GameStatus" index="1"]
+visible = false
 
 [connection signal="pressed" from="CanvasLayer/UI/ButtonContainer/DealButton" to="." method="_OnDealButtonPressed"]
 [connection signal="pressed" from="CanvasLayer/UI/ButtonContainer/HitButton" to="." method="_OnHitButtonPressed"]

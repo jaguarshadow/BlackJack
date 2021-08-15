@@ -16,7 +16,8 @@ public class Blackjack : Node2D
     private Label DealerTotal;
     private Label PlayerTotal;
     private Label GameStatus;
-    private int Score = 0;
+    private int Wins = 0;
+    private int Losses = 0;
 
     [Signal]
     public delegate void TotalChanged(Label label, string Total);
@@ -33,7 +34,7 @@ public class Blackjack : Node2D
         ((Button)GetNode("CanvasLayer/UI/ButtonContainer/DealButton")).Disabled = false;
     }
 
-    public async void DealHand()
+    private async void DealHand()
     {
         if (GameStatus != null) GameStatus.Hide();
         ((Button)GetNode("CanvasLayer/UI/ButtonContainer/DealButton")).Disabled = true;
@@ -50,7 +51,7 @@ public class Blackjack : Node2D
         ((Button)GetNode("CanvasLayer/UI/ButtonContainer/StandButton")).Disabled = false;
     }
 
-    public void CreateDeck()
+    private void CreateDeck()
     {
         foreach (Card.SUIT suit in Enum.GetValues(typeof(Card.SUIT)))
         {
@@ -64,13 +65,13 @@ public class Blackjack : Node2D
         }
     }
 
-    public void ShuffleDeck(ref List<Card> deck)
+    private void ShuffleDeck(ref List<Card> deck)
     {
         Random random = new Random();
         deck = deck.OrderBy(item => random.Next()).ToList();
     }
 
-    public Card DealCard(List<Card> hand, HBoxContainer container, bool hidden = false)
+    private Card DealCard(List<Card> hand, HBoxContainer container, bool hidden = false)
     {
         if (Deck.Count < 1)
         {
@@ -92,18 +93,19 @@ public class Blackjack : Node2D
         return c;
     }
 
-    public void ChangeTotal(Label label, int total)
+    private void ChangeTotal(Label label, int total)
     {
         if (total == -1) label.Text = "Total: ??";
         else label.Text = "Total: " + total;
     }
 
-    public void ChangeScore(int score)
+    private void ChangeScore(int score)
     {
-        ((Label)GetNode("CanvasLayer/UI/GameStatus/Score")).Text = string.Format("Score: {0}", score);
+        ((Label)GetNode("CanvasLayer/UI/GameScore/Score")).Text = string.Format("Score: {0}", score);
+        ((Label)GetNode("CanvasLayer/UI/GameScore/Ratio")).Text = string.Format("{0} W  :  {1} L", Wins, Losses);
     }
 
-    public void ChangeResult(string result, bool won = true)
+    private void ChangeResult(string result, bool won = true)
     {
         if (won) GameStatus = (Label)GetNode("CanvasLayer/UI/GameStatus/ResultWin");
         else GameStatus = (Label)GetNode("CanvasLayer/UI/GameStatus/ResultLose");
@@ -111,7 +113,7 @@ public class Blackjack : Node2D
         GameStatus.Show();
     }
 
-    public int CheckHand(List<Card> hand)
+    private int CheckHand(List<Card> hand)
     {
         List<string> hand_values = hand.Select(card => card.CardValue).ToList();
         int total = hand_values.Sum(value => Card.Values[value]);
@@ -148,8 +150,8 @@ public class Blackjack : Node2D
         if (total > 21)
         {
             ChangeResult("Player Busted\nHouse Wins.", false);
-            Score -= 1;
-            ChangeScore(Score);
+            Losses += 1;
+            ChangeScore(Wins - Losses);
             ((Button)GetNode("CanvasLayer/UI/ButtonContainer/HitButton")).Disabled = true;
             ((Button)GetNode("CanvasLayer/UI/ButtonContainer/StandButton")).Disabled = true;
             ((Button)GetNode("CanvasLayer/UI/ButtonContainer/DealButton")).Disabled = false;
@@ -178,20 +180,20 @@ public class Blackjack : Node2D
             if ((21 - player_total) < (21 - dealer_total))
             {
                 ChangeResult("Player Wins!");
-                Score += 1;
+                Wins += 1;
             }
             else
             {
                 ChangeResult("House Wins.", false);
-                Score -= 1;
+                Losses += 1;
             }
         }
         else
         {
             ChangeResult("Dealer Busted\nPlayer Wins!");
-            Score += 1;
+            Wins += 1;
         }
-        ChangeScore(Score);
+        ChangeScore(Wins - Losses);
         ((Button)GetNode("CanvasLayer/UI/ButtonContainer/DealButton")).Disabled = false;
     }
 

@@ -16,10 +16,12 @@ font_data = ExtResource( 1 )
 [sub_resource type="DynamicFont" id=3]
 font_data = ExtResource( 1 )
 
-[sub_resource type="DynamicFont" id=6]
+[sub_resource type="DynamicFont" id=4]
+outline_size = 2
+outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 1 )
 
-[sub_resource type="DynamicFont" id=7]
+[sub_resource type="DynamicFont" id=5]
 outline_size = 2
 outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 1 )
@@ -172,40 +174,59 @@ custom_fonts/font = SubResource( 3 )
 disabled = true
 text = "Stand"
 
-[node name="GameStatus" type="MarginContainer" parent="."]
+[node name="GameScore" type="MarginContainer" parent="."]
 margin_left = 64.0
-margin_top = 288.0
-margin_right = 256.0
-margin_bottom = 424.0
+margin_top = 256.0
+margin_right = 240.0
+margin_bottom = 320.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Score" type="Label" parent="GameStatus"]
+[node name="Score" type="Label" parent="GameScore"]
 margin_right = 65.0
 margin_bottom = 21.0
 size_flags_horizontal = 0
 size_flags_vertical = 0
-custom_fonts/font = SubResource( 6 )
+custom_fonts/font = SubResource( 4 )
 text = "Score: 0"
 
+[node name="Ratio" type="Label" parent="GameScore"]
+margin_top = 43.0
+margin_right = 82.0
+margin_bottom = 64.0
+size_flags_horizontal = 0
+size_flags_vertical = 8
+custom_fonts/font = SubResource( 4 )
+text = "0 W   :   0 L"
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="GameStatus" type="MarginContainer" parent="."]
+margin_left = 61.881
+margin_top = 338.854
+margin_right = 253.881
+margin_bottom = 474.854
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="ResultWin" type="Label" parent="GameStatus"]
-visible = false
-margin_top = 57.0
-margin_right = 192.0
-margin_bottom = 78.0
-size_flags_vertical = 6
-custom_fonts/font = SubResource( 7 )
+margin_right = 27.0
+margin_bottom = 21.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+custom_fonts/font = SubResource( 5 )
 custom_colors/font_color = Color( 0.552941, 0.882353, 0.52549, 1 )
 text = "Win"
 
 [node name="ResultLose" type="Label" parent="GameStatus"]
-visible = false
-margin_top = 57.0
-margin_right = 192.0
-margin_bottom = 78.0
-size_flags_vertical = 6
-custom_fonts/font = SubResource( 7 )
+margin_right = 38.0
+margin_bottom = 21.0
+size_flags_horizontal = 2
+size_flags_vertical = 2
+custom_fonts/font = SubResource( 5 )
 custom_colors/font_color = Color( 0.831373, 0.407843, 0.407843, 1 )
 text = "Lose"
 __meta__ = {
