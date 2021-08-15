@@ -15,7 +15,7 @@ public class Blackjack : Node2D
     private HBoxContainer PlayerContainer;
     private Label DealerTotal;
     private Label PlayerTotal;
-    private Label GameStatusLabel;
+    private Label GameStatus;
     private int Score = 0;
 
     [Signal]
@@ -35,7 +35,7 @@ public class Blackjack : Node2D
 
     public async void DealHand()
     {
-        if (GameStatusLabel != null) GameStatusLabel.Hide();
+        if (GameStatus != null) GameStatus.Hide();
         ((Button)GetNode("CanvasLayer/UI/ButtonContainer/DealButton")).Disabled = true;
         ChangeTotal(DealerTotal, -1);
         await ToSignal(GetTree().CreateTimer(0.5f), "timeout");
@@ -105,10 +105,10 @@ public class Blackjack : Node2D
 
     public void ChangeResult(string result, bool won = true)
     {
-        if (won) GameStatusLabel = (Label)GetNode("CanvasLayer/UI/GameStatus/ResultWin");
-        else GameStatusLabel = (Label)GetNode("CanvasLayer/UI/GameStatus/ResultLose");
-        GameStatusLabel.Text = result;
-        GameStatusLabel.Show();
+        if (won) GameStatus = (Label)GetNode("CanvasLayer/UI/GameStatus/ResultWin");
+        else GameStatus = (Label)GetNode("CanvasLayer/UI/GameStatus/ResultLose");
+        GameStatus.Text = result;
+        GameStatus.Show();
     }
 
     public int CheckHand(List<Card> hand)
