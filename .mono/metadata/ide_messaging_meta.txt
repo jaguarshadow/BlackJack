@@ -1,0 +1,2 @@
+﻿50266
+C:/Users/starb/Documents/Game Dev/Godot/Godot_v3.3.2-stable_mono_win64.exe

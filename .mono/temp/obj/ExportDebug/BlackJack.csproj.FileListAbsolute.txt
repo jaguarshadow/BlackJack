@@ -1,0 +1,8 @@
+C:\Users\starb\Documents\Godot Projects\BlackJack\.mono\temp\bin\ExportDebug\BlackJack.dll
+C:\Users\starb\Documents\Godot Projects\BlackJack\.mono\temp\bin\ExportDebug\BlackJack.pdb
+C:\Users\starb\Documents\Godot Projects\BlackJack\.mono\temp\obj\ExportDebug\BlackJack.csproj.AssemblyReference.cache
+C:\Users\starb\Documents\Godot Projects\BlackJack\.mono\temp\obj\ExportDebug\BlackJack.AssemblyInfoInputs.cache
+C:\Users\starb\Documents\Godot Projects\BlackJack\.mono\temp\obj\ExportDebug\BlackJack.AssemblyInfo.cs
+C:\Users\starb\Documents\Godot Projects\BlackJack\.mono\temp\obj\ExportDebug\BlackJack.csproj.CoreCompileInputs.cache
+C:\Users\starb\Documents\Godot Projects\BlackJack\.mono\temp\obj\ExportDebug\BlackJack.dll
+C:\Users\starb\Documents\Godot Projects\BlackJack\.mono\temp\obj\ExportDebug\BlackJack.pdb

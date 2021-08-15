@@ -1,0 +1,214 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://assets/Righteous-Regular.ttf" type="DynamicFontData" id=1]
+
+[sub_resource type="DynamicFont" id=1]
+size = 38
+outline_size = 3
+outline_color = Color( 0, 0, 0, 1 )
+use_filter = true
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=2]
+extra_spacing_bottom = -10
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=3]
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=6]
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=7]
+outline_size = 2
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 1 )
+
+[node name="UI" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchor_right = 1.0
+margin_bottom = 48.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GameTitle" type="Label" parent="MarginContainer"]
+margin_right = 1024.0
+margin_bottom = 48.0
+custom_fonts/font = SubResource( 1 )
+text = "Blackjack"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Dealer" type="VBoxContainer" parent="."]
+margin_left = 320.0
+margin_top = 96.0
+margin_right = 960.0
+margin_bottom = 304.0
+custom_constants/separation = 10
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Dealer"]
+margin_right = 107.0
+margin_bottom = 25.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+custom_fonts/font = SubResource( 2 )
+text = "Dealer's Hand
+"
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="Hand" type="HBoxContainer" parent="Dealer"]
+margin_top = 35.0
+margin_right = 640.0
+margin_bottom = 159.0
+rect_min_size = Vector2( 640, 124 )
+custom_constants/separation = 90
+
+[node name="Total" type="Label" parent="Dealer"]
+margin_top = 169.0
+margin_right = 640.0
+margin_bottom = 200.0
+text = "Total:
+"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Player" type="VBoxContainer" parent="."]
+margin_left = 320.0
+margin_top = 320.0
+margin_right = 960.0
+margin_bottom = 528.0
+custom_constants/separation = 10
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Player"]
+margin_right = 80.0
+margin_bottom = 25.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+custom_fonts/font = SubResource( 2 )
+text = "Your Hand
+"
+
+[node name="Hand" type="HBoxContainer" parent="Player"]
+margin_top = 35.0
+margin_right = 640.0
+margin_bottom = 159.0
+rect_min_size = Vector2( 640, 124 )
+custom_constants/separation = 90
+
+[node name="Total" type="Label" parent="Player"]
+margin_top = 169.0
+margin_right = 640.0
+margin_bottom = 200.0
+text = "Total:
+"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ButtonContainer" type="VBoxContainer" parent="."]
+anchor_left = 0.125
+anchor_top = 0.107
+anchor_right = 0.125
+anchor_bottom = 0.107
+margin_left = -64.0
+margin_top = 63.8
+margin_right = 128.0
+margin_bottom = 175.8
+custom_constants/separation = 10
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DealButton" type="Button" parent="ButtonContainer"]
+margin_right = 192.0
+margin_bottom = 30.0
+rect_min_size = Vector2( 192, 30 )
+size_flags_horizontal = 0
+size_flags_vertical = 0
+custom_fonts/font = SubResource( 3 )
+text = "Deal"
+
+[node name="HitButton" type="Button" parent="ButtonContainer"]
+margin_top = 40.0
+margin_right = 192.0
+margin_bottom = 70.0
+rect_min_size = Vector2( 192, 30 )
+size_flags_horizontal = 0
+size_flags_vertical = 0
+custom_fonts/font = SubResource( 3 )
+disabled = true
+text = "Hit"
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="StandButton" type="Button" parent="ButtonContainer"]
+margin_top = 80.0
+margin_right = 192.0
+margin_bottom = 110.0
+rect_min_size = Vector2( 192, 30 )
+size_flags_horizontal = 0
+size_flags_vertical = 0
+custom_fonts/font = SubResource( 3 )
+disabled = true
+text = "Stand"
+
+[node name="GameStatus" type="MarginContainer" parent="."]
+margin_left = 64.0
+margin_top = 288.0
+margin_right = 256.0
+margin_bottom = 424.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Score" type="Label" parent="GameStatus"]
+margin_right = 65.0
+margin_bottom = 21.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+custom_fonts/font = SubResource( 6 )
+text = "Score: 0"
+
+[node name="ResultWin" type="Label" parent="GameStatus"]
+visible = false
+margin_top = 57.0
+margin_right = 192.0
+margin_bottom = 78.0
+size_flags_vertical = 6
+custom_fonts/font = SubResource( 7 )
+custom_colors/font_color = Color( 0.552941, 0.882353, 0.52549, 1 )
+text = "Win"
+
+[node name="ResultLose" type="Label" parent="GameStatus"]
+visible = false
+margin_top = 57.0
+margin_right = 192.0
+margin_bottom = 78.0
+size_flags_vertical = 6
+custom_fonts/font = SubResource( 7 )
+custom_colors/font_color = Color( 0.831373, 0.407843, 0.407843, 1 )
+text = "Lose"
+__meta__ = {
+"_edit_use_anchors_": false,
+"_editor_description_": ""
+}
